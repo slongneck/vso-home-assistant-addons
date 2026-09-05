@@ -1,0 +1,6 @@
+git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+cd YOUR_REPOSITORY
+chmod +x vso-vault-backup-fallback/rootfs/etc/services.d/vso-fallback/run
+git add --chmod=+x vso-vault-backup-fallback/rootfs/etc/services.d/vso-fallback/run
+git commit -m "Make VSO fallback startup executable"
+git push

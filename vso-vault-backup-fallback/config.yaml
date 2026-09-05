@@ -1,0 +1,38 @@
+name: VSO Vault Backup Fallback
+version: 1.1.9
+slug: vso_vault_backup_fallback
+description: Independent, hash-verified SMB fallback for Home Assistant backups
+url: https://github.com/slongneck/vso-home-assistant-addons
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+init: false
+host_network: true
+map:
+  - backup:ro
+  - homeassistant_config:ro
+  - data:rw
+ports:
+  8124/tcp: 8124
+ports_description:
+  8124/tcp: VSO fallback control and status API
+options:
+  vault_host: BACKUP_HOST
+  vault_share: BACKUP_SHARE
+  vault_subpath: BACKUP_SUBPATH
+  username_secret: vso_vault_backup_username
+  password_secret: vso_vault_backup_password
+  api_token_secret: vso_vault_backup_api_token
+  retention: 12
+  log_level: INFO
+schema:
+  vault_host: str
+  vault_share: str
+  vault_subpath: str
+  username_secret: str
+  password_secret: str
+  api_token_secret: str
+  retention: int
+  log_level: list(DEBUG|INFO|WARNING|ERROR)
